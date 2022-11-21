@@ -3,8 +3,14 @@
     <a class="navbar-brand" routerLink="products">
       <img src="assets/Logo.png" alt="Solid Electron" style="width: 100px;">
       </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -13,26 +19,51 @@
           <a class="nav-link" routerLink="products">Ürünler</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="orders">Siparişler</a>
+          <a class="nav-link" routerLink="orders">Siparişlerim</a>
         </li>
       </ul>
+      <!-- search bar -->
       <form class="form-inline mt-2 mt-md-0 w-50 mx-auto">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+        <input 
+          class="form-control mr-sm-2" 
+          type="text" 
+          placeholder="Search" 
+          aria-label="Search" 
+          name="search" 
+          [(ngModel)]="searchTerm"
+          (keyup)="search($event)">
       </form>
     </div>
-    <button *ngIf="isLoggedIn" class="btn" style="color:white">
+     <!-- logout button -->
+    <button 
+      *ngIf="isLoggedIn" 
+      (click)="logout()" 
+      routerLink="login" 
+      class="btn" 
+      style="color:white">
       Çıkış
     </button>
   
-    <button *ngIf="isLoggedIn" class="btn" style="color:white">
+    <button 
+      *ngIf="isLoggedIn" 
+      routerLink="login" 
+      class="btn" 
+      style="color:white">
       Giriş
     </button>
   
-    <button *ngIf="!isLoggedIn" class="btn" style="color:white">
+    <button 
+      *ngIf="!isLoggedIn" 
+      routerLink="signup" 
+      class="btn" 
+      style="color:white">
       Kayıt Ol
     </button>
-
-    <button class="btn" style="color:white">
+     <!--basket with counter -->
+    <button 
+      routerLink="basket" 
+      class="btn" 
+      style="color:white">
       <i style="font-size: 25px;" class="bi bi-cart-check"></i>
       <div style="font-size: 10px" class="badge bg-success">
         {{ totalItem }}

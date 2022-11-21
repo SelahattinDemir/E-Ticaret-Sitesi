@@ -1,3 +1,4 @@
+<!-- looping all products -->
 <div class="container"*ngFor="let item of productsDetail" style="margin-top: 70px;">
     <div class="card"*ngIf="item.id==currentId">
         <div class="card-body">
@@ -16,11 +17,11 @@
 
                     <h3 class="box-title mt-5">Yorumlar</h3>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-check text-success"></i>Lorem ipsum dolor sit amet.</li>
-                        <li><i class="fa fa-check text-success"></i>Lorem ipsum dolor sit amet.</li>
-                        <li><i class="fa fa-check text-success"></i>Lorem ipsum dolor sit amet.</li>
+                        <li ><i class="bi bi-check-lg text-success"></i>Lorem ipsum dolor sit amet.</li>
+                        <li><i class="bi bi-check-lg text-success"></i>Lorem ipsum dolor sit amet.</li>
+                        <li><i class="bi bi-check-lg text-success"></i>Lorem ipsum dolor sit amet.</li>
                     </ul>
-                     <!-- A sequential array from 1 to 5 is sent. If there is a value from the db, if there is no full star, it shows the score in this way. -->
+                     <!-- With help of star array adding 5 star according to data from server -->
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item" *ngFor="let star of star">
                         <i [class]="item.star >= star ? 'bi bi-star-fill' : 'bi bi-star'"></i>

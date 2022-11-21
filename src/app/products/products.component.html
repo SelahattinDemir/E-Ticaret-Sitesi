@@ -1,8 +1,8 @@
 <!-- Category section -->
-<div style="
+<div style="margin-top:70px ;
     background-color: #2f4353;
     background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);" class="mh-100">
-    <div class=" container-fluid" style="margin-top:70px;background-color: white;">
+    <div class=" container-fluid" style="background-color: white;">
         <div class="container d-flex">
             <div class="item">
                 <button style="border: none; background: none" (click)="categoryFilterHandler('')">
@@ -25,7 +25,8 @@
     <!-- Products-->
     <div class="container mx-auto mt-4">
         <div class="row">
-            <ng-container *ngFor="let item of filterCategory">
+         <!-- looping all items if searching action happen filtered search items  will be looped-->
+            <ng-container *ngFor="let item of filterCategory | filterHandler: searchKey:'title'">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem">
                         <img src="{{ item.image }}"/>
@@ -45,7 +46,7 @@
                             max-width: 100ch;">
                         {{ item.description }}
                         </p>
-                        <!-- A sequential array from 1 to 5 is sent. If there is a value from the db, if there is no full star, it shows the score in this way. -->
+                         <!-- With help of star array adding 5 star according to data from server -->
                         <ul class="list-group list-group-horizontal">
                             <li class="list-group-item" *ngFor="let star of star">
                                 <i [class]="

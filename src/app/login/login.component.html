@@ -1,0 +1,42 @@
+<!-- container for login -->
+
+<body class="text-center mt-5" style="height:621px;">
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-signin">
+      <img src="assets/Logo.png" alt="Solid Electron" style="width: 300px;">
+      <h1 class="h3 mb-3 mt-3 font-weight-normal">Lütfen Giriş Yapın</h1>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="sr-only">Email adresi</label>
+        <input 
+          formControlName="email" 
+          type="email" 
+          class="form-control" 
+          id="exampleInputEmail1"
+          placeholder=" Email"
+          autocomplete="disabled" />
+        <span class="text-danger" *ngIf="
+            loginForm.controls['email'].touched && loginForm.controls['email'].invalid && loginForm.hasError('required', 'email')">
+            Email girmek zorunlu
+        </span>
+        <br>
+        <!-- Password -->
+        <label for="exampleInputPassword1" class="sr-only">Şifre</label>
+        <input 
+          formControlName="password" 
+          type="password" 
+          class="form-control"     
+          id="exampleInputPassword1"
+          placeholder="Password" />
+        <span class="text-danger" *ngIf="
+            loginForm.controls['password'].touched && loginForm.controls['password'].invalid && loginForm.hasError('required', 'password')">
+            Şifre girmek zorunlu
+        </span>
+        <br>
+      </div>
+      <!-- Login button -->
+      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-lg btn-primary btn-block">
+        Giriş Yapın
+      </button>
+    </form>
+  </body>

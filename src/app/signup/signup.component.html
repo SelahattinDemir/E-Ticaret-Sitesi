@@ -1,0 +1,62 @@
+<body class="text-center mt-5"  style="height:621px;">
+    <form [formGroup]="signupForm" (ngSubmit)="signUp()" class="form-signin">
+      <img src="assets/Logo.png" alt="Solid Electron" style="width: 300px;">
+      <h1 class="h3 mb-3 mt-3 font-weight-normal">Lütfen Kayıt Ol</h1>
+      <!-- Username -->
+      <div class="form-group">
+        <label for="exampleInputUsername1" class="sr-only">Kullanıcı Adı</label>
+        <input 
+          formControlName="username" 
+          type="username" 
+          class="form-control" 
+          id="exampleInputUsername1"
+          placeholder="Username"
+          autocomplete="disabled" />
+        <span class="text-danger" *ngIf="
+            signupForm.controls['username'].touched && signupForm.controls['username'].invalid && signupForm.hasError('required', 'username')">
+            Kullanıcı adı girmek zorunludur
+        </span>
+        <br>
+        <!-- Email Adress -->
+        <label for="exampleInputEmail1" class="sr-only">Email adresi</label>
+        <input 
+          formControlName="email" 
+          type="email" 
+          class="form-control" 
+          id="exampleInputEmail1"
+          placeholder="Email"
+          autocomplete="disabled" />
+        <span class="text-danger" *ngIf="
+            signupForm.controls['email'].touched && signupForm.controls['email'].invalid && signupForm.hasError('required', 'email')">
+            Email girmek zorunludur
+        </span>
+        <br>
+        <span class="text-danger" *ngIf="!signupForm.valid && signupForm.hasError('email', 'email')">
+            Email geçerli değil
+        </span>
+        <!-- Password -->
+        <label for="exampleInputPassword1" class="sr-only">Şifre</label>
+        <input 
+          formControlName="password" 
+          type="password" 
+          class="form-control" 
+          id="exampleInputPassword1"
+          placeholder="Password" />
+        <span class="text-danger" *ngIf="
+            signupForm.controls['password'].touched && signupForm.controls['password'].invalid && signupForm.hasError('required', 'password')">
+            Şifre girmek zorunludur
+        </span>
+        <span class="text-danger" *ngIf="
+            !signupForm.valid && signupForm.hasError('minlength', 'password')
+          ">Şifre en az 6 karakterli olmalı</span>
+      </div>
+      <!-- Login button -->
+      <button 
+        [disabled]="!signupForm.valid" 
+        type="submit" 
+        class="btn btn-lg btn-primary btn-block">
+        Kayıt Ol
+      </button>
+      <p class="mt-4 mb-3 text-muted">&copy; 2022-2023</p>
+    </form>
+  </body>

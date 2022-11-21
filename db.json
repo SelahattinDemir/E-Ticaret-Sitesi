@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Dido Trio Gofret Beyaz Çikolatalı 36,5 G",
       "brand": "Ülker",
-      "price": 5.50,
+      "price": 5.5,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
       "category": "foods",
       "image": "https://ayb.akinoncdn.com/products/2020/06/24/35775/4b4ab3ae-3df7-470b-a30e-b3a28982044b_size780x780_quality60_cropCenter.jpg",
@@ -20,7 +20,7 @@
     {
       "id": 2,
       "title": " Laviva Çikolata Bisküvili 35 G",
-      "price": 4.50,
+      "price": 4.5,
       "brand": "Ülker",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
       "image": "https://ayb.akinoncdn.com/products/2019/02/18/14420/8b76a5d4-5d7e-4cf5-bb1a-69491be8a976_size780x780_quality60_cropCenter.jpg",
@@ -76,7 +76,7 @@
     {
       "id": 6,
       "title": "Kızılay Maden Suyu Mango-ananas 6x200 ml",
-      "price": 24.50,
+      "price": 24.5,
       "brand": "Kızılay",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
       "category": "drinks",
@@ -87,7 +87,7 @@
     {
       "id": 7,
       "title": "Cappy Meyve Nektarı Meyve Kokteyli 1000 ml",
-      "price": 10.50,
+      "price": 10.5,
       "brand": "Cappy",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
       "category": "drinks",
@@ -98,7 +98,7 @@
     {
       "id": 8,
       "title": "Schweppes Gazlı İçecek Mandalina 1 L",
-      "price": 20.00,
+      "price": 20,
       "brand": "Schweppes ",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem. ",
       "category": "drinks",
@@ -121,7 +121,7 @@
       "id": 9,
       "title": "Nescafe Xpress Soğuk Kahve 250 ml",
       "brand": "Nescafe",
-      "price": 18.00,
+      "price": 18,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
       "category": "drinks",
       "image": "https://ayb.akinoncdn.com/products/2022/08/25/1099589/847de1f0-e785-4957-bf6a-7b7f31aae87f_size780x780_quality60_cropCenter.jpg",
@@ -131,46 +131,61 @@
   ],
   "signupUsers": [
     {
+      "id": 1,
       "username": "deneme",
       "email": "deneme@deneme",
       "password": "deneme",
-      "id": 1
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "email": "admin@admin",
+      "password": "123456",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssfdgdf",
+      "role": "admin"
     }
   ],
   "orders": [
     [
       {
-        "id": 1,
-        "title": "Basic Denim Jacket",
-        "price": 119.9,
-        "description": " Collared denim jacket featuring long sleeves with buttoned cuffs. Chest flap pockets and hip welt pockets. Faded effect. Button-up front.",
-        "category": "mens clothing",
-        "image": "https://images.hepsiburada.net/banners/s/0/278-365/banner_20210924083519.png/format:webp",
+        "id": 2,
+        "title": " Laviva Çikolata Bisküvili 35 G",
+        "price": 4.5,
+        "brand": "Ülker",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
+        "image": "https://ayb.akinoncdn.com/products/2019/02/18/14420/8b76a5d4-5d7e-4cf5-bb1a-69491be8a976_size780x780_quality60_cropCenter.jpg",
+        "category": "foods",
         "star": 5,
+        "comments": [
+          {
+            "username": "Martin Doe",
+            "comment": "People say money can’t buy happiness. They Lie. Money buys Coffee, Coffee makes Me Happy!",
+            "time": "Thu May 12 2022 13:19:11 GMT+0300 (GMT+03:00)"
+          }
+        ],
         "quantity": 1,
-        "total": 119.9
+        "total": 4.5
       },
       {
         "id": 2,
-        "title": "Trouser",
-        "price": 79.9,
-        "description": "Straight-fit trousers featuring side in-seam pockets at the hip and welt pockets at the back. Contrast side stripe on the legs. Side slit at the hem. Hidden metal hook fastening at",
-        "category": "mens clothing",
-        "image": "https://images.hepsiburada.net/banners/s/0/278-365/banner_20220315175231.png/format:webp",
-        "star": 4,
+        "title": " Laviva Çikolata Bisküvili 35 G",
+        "price": 4.5,
+        "brand": "Ülker",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste a recusandae commodi sint labore excepturi doloremque perferendis minima, enim ipsa, ducimus quo facere tenetur neque atque eligendi voluptate quidem.",
+        "image": "https://ayb.akinoncdn.com/products/2019/02/18/14420/8b76a5d4-5d7e-4cf5-bb1a-69491be8a976_size780x780_quality60_cropCenter.jpg",
+        "category": "foods",
+        "star": 5,
+        "comments": [
+          {
+            "username": "Martin Doe",
+            "comment": "People say money can’t buy happiness. They Lie. Money buys Coffee, Coffee makes Me Happy!",
+            "time": "Thu May 12 2022 13:19:11 GMT+0300 (GMT+03:00)"
+          }
+        ],
         "quantity": 1,
-        "total": 79.9
-      },
-      {
-        "id": 3,
-        "title": "Blazer",
-        "price": 246.9,
-        "description": "Blazer with a notched lapel collar. Long sleeves with buttoned cuffs. Chest welt pocket and hip flap pocket. Inside pocket detail. Back vent at the hem. Front button",
-        "category": "womens clothing",
-        "image": "https://images.hepsiburada.net/banners/s/0/278-365/banner_20210915145926.png/format:webp",
-        "star": 3.5,
-        "quantity": 1,
-        "total": 246.9
+        "total": 4.5
       }
     ]
   ]

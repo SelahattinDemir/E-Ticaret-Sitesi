@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../Services/api.service';
-import { CartService } from '../Services/cart.services';
+import { CartService } from '../Services/cart.service';
 
 @Component({
   selector: 'app-productsdetail',
@@ -14,11 +14,11 @@ export class ProductsdetailComponent implements OnInit {
   public productsDetail: any;
   public currentId: any;
 
-  constructor(private route:ActivatedRoute, private api:ApiService,private cartService:CartService) { }
+  constructor(private route: ActivatedRoute, private api: ApiService, private cartService: CartService) { }
 
   ngOnInit(): void {
 //With paramMap you can route multiple page with only one template 
-    let itemId=this.route.snapshot.paramMap.get("id");
+    let itemId:any = this.route.snapshot.paramMap.get("id");
     this.currentId=Number(itemId);
 //For template view taking data from server
     this.api.getAllProductApi().subscribe(

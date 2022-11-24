@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { product } from '../models/product';
@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ApiService {
 
-  public checkUser = new BehaviorSubject<boolean>(false);
-
+  public user = new BehaviorSubject<any>("");
   private baseUrl:string = "http://localhost:3000/";
 
   constructor(private http : HttpClient, private router:Router) {}
@@ -45,23 +44,16 @@ getAllProductApi() {
     return this.http.post<any>(`${this.baseUrl}signupUsers`,signupForm.value);
   }
 
-  login(){
-    return this.http.get<any>(`${this.baseUrl}signupUsers`).pipe(map((res:any)=>{
-      return res;
-    }))
-  }
-
-  logout(){
-    this.checkUser.next(false)
-    localStorage.clear()
+  login(email:any,password:any) {
+    return this.http.get(`${this.baseUrl}signupUsers/?email=${email}&password=${password}`);
   }
 
   getToken(){
-   return localStorage.getItem("token")
+   return localStorage.getItem("token");
   }
 
   //ADMIN SECTION
-
+  // HEPSİ APİ İSTEĞİYLE YAPILMALI ÇÜNKÜ SERVER DA DEĞİŞMELİ 
   Postadmin(data : any){
     return this.http.post<any>(`${this.baseUrl}products`,data)
     .pipe(map((res:any)=>{

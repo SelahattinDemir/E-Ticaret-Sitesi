@@ -9,14 +9,20 @@ export class CartService {
 //Bey Behavior subject you can give initial value , you can next another observable anytime , you can emmit data and observe it
 
   public cartItemList : any =[]
-  public productList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>("");
+  private productList = new BehaviorSubject<any>([]);
+  public search = new BehaviorSubject<any>("");
 
   constructor() { }
 
   getProducts(){
+    // asobservable güvenlik sağlamak amaçlı kimse bu getproduct'a ulaşanlar next yapamasın diye 
+    //BÜTÜN SİSTEM PRODUCTLİST ÜZERİNDE Çalışıyor cart item list aracı 
     return this.productList.asObservable();
   }
+
+  getSearch() { 
+    return this.search.asObservable();
+ }
 
   setProduct(product : any){
     this.cartItemList.push(...product);
@@ -34,5 +40,17 @@ export class CartService {
       grandTotal += price.total;
     })
     return grandTotal;
+  }
+  removeCartItem(product: any){
+    this.cartItemList.map((item:any, index:any)=>{
+      if(product.id=== item.id){
+        this.cartItemList.splice(index,1);
+      }
+    })
+    this.productList.next(this.cartItemList);
+  }
+  removeAllCart(){
+    this.cartItemList = []
+    this.productList.next(this.cartItemList);
   }
 }

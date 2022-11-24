@@ -40,22 +40,31 @@
                             <div class="product-name">
                               {{ item.title }}
                               <div class="product-info">
-                                <div>Açıklama: <span class="value">{{ item.description }}</span></div>
-  
+                                <div>Açıklama: <span class="value">{{ item.description }}</span>
+                                </div>
                               </div>
                             </div>
                           </div>
                           <div class="col-md-3 quantity">
                             <label for="quantity">Miktar:</label>
-                            <input id="quantity" type="number" value="1" class="form-control quantity-input">
+                            <input 
+                              id="quantity" 
+                              type="number" 
+                              value="1" 
+                              class="form-control quantity-input"
+                              (change)="quantity($event,i)">
                           </div>
                           <div class="col-md-3 price">
-                            <span>{{ item.price }} TL</span>
+                            <span>{{ item.total | number}} TL</span>
                           </div>
-                          <div class="col-md-1"> <button (click)="removeItem(item)" class="btn btn-danger"
+                          <div class="col-md-1">
+                            <button 
+                              (click)="removeItem(item)" 
+                              class="btn btn-danger"
                               style="margin-left: 10%;">
                               <i class="bi bi-trash-fill"></i>
-                            </button></div>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -69,16 +78,20 @@
               <div class="summary">
                 <h3>Özet</h3>
                 <div class="summary-item">
-                  <span class="text">Ara Toplam</span><span class="price">{{ grandTotal|number }} TL</span>
+                  <span class="text">Ara Toplam</span>
+                  <span class="price">{{ grandTotal | number }} TL</span>
                 </div>
                 <div class="summary-item">
-                  <span class="text">İndirim</span><span class="price">0 TL</span>
+                  <span class="text">İndirim</span>
+                  <span class="price">36% Off</span>
                 </div>
                 <div class="summary-item">
-                  <span class="text">Nakliye</span><span class="price">0 TL</span>
+                  <span class="text">Kargo</span>
+                  <span class="price">Ücretsiz Kargo</span>
                 </div>
                 <div class="summary-item">
-                  <span class="text">Toplam</span><span class="price">{{ grandTotal |number}} TL</span>
+                  <span class="text">Toplam</span>
+                  <span class="price">{{ grandTotal | number}} TL</span>
                 </div>
                 <button type="button" class="btn btn-primary btn-lg btn-block"(click)="checkout()" routerLink="orders">Ödeme</button>
               </div>

@@ -24,9 +24,11 @@ export class AdminDashboardComponent implements OnInit {
     title: ['',Validators.required],
     price: ['',Validators.required],
     description: ['',Validators.required],
-    category: [''],
-    image: ['']
-
+    category: ['',Validators.required],
+    image: ['',Validators.required],
+    brand: ['',Validators.required],
+    star:[0],
+    comment:[]
     })
     this.gettingData()
   }
@@ -38,7 +40,7 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  clickAddadmin(){
+  addProduct(){
     this.formValue.reset();
     this.showAdd = true;
     this.showUpdate = false;
@@ -50,6 +52,9 @@ export class AdminDashboardComponent implements OnInit {
     this.adminObj.description = this.formValue.value.description;
     this.adminObj.category = this.formValue.value.category;
     this.adminObj.image = this.formValue.value.image;
+    this.adminObj.brand = this.formValue.value.brand;
+    this.adminObj.star = this.formValue.value.star;
+    this.adminObj.comment = this.formValue.value.comment;
     this.api.Postadmin(this.adminObj)
     .subscribe(res => {
       console.log(res);
@@ -64,9 +69,12 @@ export class AdminDashboardComponent implements OnInit {
     this.adminObj.description = this.formValue.value.description;
     this.adminObj.category = this.formValue.value.category;
     this.adminObj.image = this.formValue.value.image;
+    this.adminObj.brand = this.formValue.value.brand;
+    this.adminObj.star = this.formValue.value.star;
+    this.adminObj.comment = this.formValue.value.comment;
     this.api.Updateadmin(this.adminObj)
    .subscribe(res=>{
-     alert("Updated Successfully")
+     alert("Başarıyla Güncellendi")
      let ref = document.getElementById('close');
      ref?.click();
      this.gettingData()
@@ -81,24 +89,25 @@ export class AdminDashboardComponent implements OnInit {
     this.formValue.controls['description'].setValue(row.description);
     this.formValue.controls['category'].setValue(row.category);
     this.formValue.controls['image'].setValue(row.image);
+    this.formValue.controls['brand'].setValue(row.brand);
     this.showUpdate = true;
     this.showAdd = false;
   }
 
   deleteadminDetail(row : any){
-    let clickedYes = confirm("Are you sure want to delete");
+    let clickedYes = confirm("Silmek istediğinizden emin misiniz?");
     if(clickedYes){
       this.api.Deleteadmin(row.id)
       .subscribe(res=>{
-        alert("Deleted Successfully");
+        alert("Başarıyla Silindi");
         this.gettingData()
       })
     }
   }
 
  canExit():boolean{
-  if(this.formValue.dirty && !this.formValue.pristine){
-    if(confirm("There are some unsaved changes")){
+  if(this.formValue.pristine && this.formValue.touched || this.formValue.touched && this.formValue.invalid){
+    if(confirm("Kaydedilmemiş bazı değişiklikler var")){
       return true
     }
     return false

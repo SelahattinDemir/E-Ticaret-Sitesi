@@ -6,7 +6,7 @@
                 type="button" 
                 id="add-btn" 
                 class="btn btn-success" 
-                (click)="clickAddadmin()" 
+                (click)="addProduct()" 
                 data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 Ürün Ekle
@@ -23,13 +23,14 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th scope="col">admin ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">Category</th>
-            <th scope="col">İmage Url</th>
-            <th scope="col">Action</th>
+            <th scope="col">yönetici ID</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Kategori</th>
+            <th scope="col">Resim Url</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Aksiyon</th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +42,7 @@
             <td>{{row.description}}</td>
             <td>{{row.category}}</td>
             <td>{{row.image}}</td>
+            <td>{{row.brand}}</td>
             <td>
                 <button 
                     style="color: #fff;" 
@@ -82,8 +84,7 @@
                             type="text" 
                             formControlName="title" 
                             class="form-control" 
-                            id="exampleInputEmail1" 
-                            aria-describedby="emailHelp">
+                            id="exampleInputEmail1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Fiyat</label>
@@ -99,8 +100,7 @@
                             type="email" 
                             formControlName="description" 
                             class="form-control" 
-                            id="exampleInputEmail1" 
-                            aria-describedby="emailHelp">
+                            id="exampleInputEmail1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Kategori</label>
@@ -115,6 +115,16 @@
                         <input 
                             type="text" 
                             formControlName="image" 
+                            class="form-control" 
+                            id="exampleInputPassword1">
+                        <div>Ön izleme</div>
+                        <img src="{{formValue.value.image}}" alt="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Marka</label>
+                        <input 
+                            type="text" 
+                            formControlName="brand" 
                             class="form-control" 
                             id="exampleInputPassword1">
                     </div>

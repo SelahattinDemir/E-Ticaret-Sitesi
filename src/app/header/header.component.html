@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" >
+<div class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" >
     <i style="font-size:30px;color: white;" class="fa-solid fa-meteor m-2"></i>
     <a class="navbar-brand" routerLink="products">
       <img src="assets/Logo.png" alt="Solid Electron" style="width: 100px;">
@@ -22,6 +22,7 @@
           <a class="nav-link" routerLink="orders">Siparişlerim</a>
         </li>
       </ul>
+      
       <!-- search bar -->
       <form class="form-inline mt-2 mt-md-0 w-50 mx-auto">
         <input 
@@ -34,18 +35,20 @@
           (keyup)="search($event)">
       </form>
     </div>
-     <!-- logout button -->
+
+     <!-- logout-login button -->
     <button 
-      *ngIf="isLoggedIn" 
+      *ngIf="user" 
       (click)="logout()" 
       routerLink="login" 
       class="btn" 
       style="color:white">
+      <span style="color: white;padding-top: 10px;">{{user.username}}</span>
       Çıkış
     </button>
   
     <button 
-      *ngIf="isLoggedIn" 
+      *ngIf="!user" 
       routerLink="login" 
       class="btn" 
       style="color:white">
@@ -53,12 +56,13 @@
     </button>
   
     <button 
-      *ngIf="!isLoggedIn" 
+      *ngIf="!user" 
       routerLink="signup" 
       class="btn" 
       style="color:white">
       Kayıt Ol
     </button>
+    
      <!--basket with counter -->
     <button 
       routerLink="basket" 
@@ -69,4 +73,4 @@
         {{ totalItem }}
       </div>
     </button>
-  </nav>
+  </div>

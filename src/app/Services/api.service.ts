@@ -2,17 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-
-import { product } from '../models/product';
 import { Router } from '@angular/router';
 
+import { product } from '../models/product';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
   public user = new BehaviorSubject<any>("");
-  private baseUrl:string = "http://localhost:3000/";
+  private baseUrl: string = "http://localhost:3000/";
 
   constructor(private http : HttpClient, private router:Router) {}
 
@@ -31,7 +30,6 @@ getAllProductApi() {
   checkoutApi(itemList:any){
     return this.http.post<any>(`${this.baseUrl}orders`,itemList);
   }
-
 
   ordersApi(){
     return this.http.get<any>(`${this.baseUrl}orders`).pipe(map((res: any, i) => {
@@ -54,25 +52,28 @@ getAllProductApi() {
 
   //ADMIN SECTION
   // HEPSİ APİ İSTEĞİYLE YAPILMALI ÇÜNKÜ SERVER DA DEĞİŞMELİ 
-  Postadmin(data : any){
+  postItemApi(data : any){
     return this.http.post<any>(`${this.baseUrl}products`,data)
     .pipe(map((res:any)=>{
       return res;
     }))
   }
-  Deleteadmin(id : number){
+
+  deleteItemApi(id : number){
     return this.http.delete<any>(`${this.baseUrl}products/${id}`)
     .pipe(map((res:any)=>{
       return res;
     }))
   }
-  Updateadmin(data : any){
-    return this.http.put<any>(`${this.baseUrl}products/${data.id}`,data)
+
+  updateItemApi(data : any, id : number){
+    return this.http.put<any>(`${this.baseUrl}products/${id}`,data)
     .pipe(map((res:any)=>{
       return res;
     }))
   }
-  Getadmins(){
+  
+  getItemApi(){
     return this.http.get<any>(`${this.baseUrl}products`)
     .pipe(map((res:any)=>{
       return res;

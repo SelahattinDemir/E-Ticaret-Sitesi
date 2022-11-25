@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../Services/api.service';
-import { CartService } from '../Services/cart.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
+import { ApiService } from '../Services/api.service';
+import { CartService } from '../Services/cart.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
    //TEMPLATE DEN ERİŞMEK İÇİN PUBLİC OLACAK
   public star: number[] = [1, 2, 3, 4, 5];
@@ -19,7 +22,7 @@ export class ProductsComponent implements OnInit {
   public viewGrid = true;
   public uniqueBrands:any=[];
 
-  constructor(public fb:FormBuilder,private api : ApiService, private cartService : CartService, private router:Router) { }
+  constructor(public fb: FormBuilder, private api: ApiService, private cartService: CartService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     //getting product from server
@@ -42,6 +45,7 @@ export class ProductsComponent implements OnInit {
 
   addtocart(item: any){
     this.cartService.addtoCart(item);
+    this.toastr.success('Ürün Sepete Eklendi ', 'Checkout');
   }
 
   //category filtering 

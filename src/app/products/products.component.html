@@ -84,13 +84,13 @@
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <label for="min" class="form-label">Min</label>
-                                            <input class="form-control" id="min" placeholder="$0" type="number" #min />
+                                            <input class="form-control" id="min" placeholder="0 TL" type="number" #min />
                                         </div>
                                         <!-- col end.// -->
 
                                         <div class="col-6">
                                             <label for="max" class="form-label">Max</label>
-                                            <input class="form-control" id="max" placeholder="$1,0000" type="number"
+                                            <input class="form-control" id="max" placeholder="1,000 TL" type="number"
                                                 #max />
                                         </div>
                                         <!-- col end.// -->
@@ -182,8 +182,8 @@
                 </aside>
                 <!-- col .// -->
                 <main class="col-lg-9">
-                    <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-                        <strong class="d-block py-2">Sonuç:
+                    <header class="d-sm-flex align-items-center border-bottom mb-3 pb-2">
+                        <strong class="d-block pt-2">Sonuç:
                             {{ (filteredProducts | filterHandler: searchKey:'title').length }}
                             Ürünler bulundu
                         </strong>
@@ -226,7 +226,7 @@
                 let item of filteredProducts | filterHandler: searchKey:'title'">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <figure class="card card-product-grid">
-                        <div class="img-wrap pt-2">
+                        <div class="img-wrap pt-2 grid">
                             <img src="{{ item.image }}" />
                         </div>
                         <figcaption class="info-wrap border-top">
@@ -320,25 +320,6 @@
                 </ng-container>
             </div>
             <hr />
-                <footer class="d-flex mt-4">
-                    <div>
-                        <a href="javascript: history.back()" class="btn btn-light">
-                            « Geri dön</a>
-                    </div>
-                    <nav class="ms-3">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">2</span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Sonraki</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </footer>
-
     <!-- ========= content items .// ========= -->
                 </main>
 <!-- col .// -->

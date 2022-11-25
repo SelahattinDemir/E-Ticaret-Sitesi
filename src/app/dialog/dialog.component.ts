@@ -33,7 +33,7 @@ export class DialogComponent implements OnInit {
       category: ['', Validators.required],
       image: ['', [Validators.required, Validators.pattern(/https?:\/\//)]],
       star: [0],
-      comment: ['']
+      comments: ['']
     })
 
     //setting formvalues for updating action
@@ -46,7 +46,7 @@ export class DialogComponent implements OnInit {
        this.formValue.controls['category'].setValue(this.row.category)
        this.formValue.controls['image'].setValue(this.row.image)
        this.formValue.controls['star'].setValue(this.row.star)
-       this.formValue.controls['comment'].setValue(this.row.comment)
+       this.formValue.controls['comments'].setValue(this.row.comments)
     }
   }
 

@@ -10,13 +10,12 @@
           type="username" 
           class="form-control" 
           id="exampleInputUsername1"
-          placeholder="Username"
+          placeholder="Kullanıcı Adı"
           autocomplete="disabled" />
         <span class="text-danger" *ngIf="
             signupForm.controls['username'].touched && signupForm.controls['username'].invalid && signupForm.hasError('usernameError', 'username')">
             Kullanıcı adı girmek zorunludur
         </span>
-        <br>
         <!-- Email Adress -->
         <label for="exampleInputEmail1" class="sr-only">Email adresi</label>
         <input 
@@ -30,7 +29,6 @@
             signupForm.controls['email'].touched && signupForm.controls['email'].invalid && signupForm.hasError('pattern', 'email')">
             Email girmek zorunludur
         </span>
-        <br>
         <span class="text-danger" *ngIf="!signupForm.valid && signupForm.hasError('email', 'email')">
             Email geçerli değil
         </span>
@@ -41,7 +39,7 @@
           type="password" 
           class="form-control" 
           id="exampleInputPassword1"
-          placeholder="Password" />
+          placeholder="Şifre" />
         <span class="text-danger" *ngIf="
             signupForm.controls['password'].touched && signupForm.controls['password'].invalid && signupForm.hasError('required', 'password')">
             Şifre girmek zorunludur
@@ -60,7 +58,7 @@
          type="password"
          class="form-control"
          id="exampleInputPassword1"
-         placeholder="Confirm Password"/>
+         placeholder="Şifreyi Onayla"/>
         <span
          class="text-danger"
          *ngIf="

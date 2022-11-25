@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../Services/cart.service';
 import { ApiService } from '../Services/api.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-basket',
@@ -13,7 +14,7 @@ export class BasketComponent implements OnInit {
   public cartItems: any = [];
   public grandTotal: any = 0;
 
-  constructor(private cartService: CartService, private api:ApiService, private router: Router,) { }
+  constructor(private cartService: CartService, private api:ApiService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -44,8 +45,9 @@ export class BasketComponent implements OnInit {
   checkout(){
     let user:any = this.api.getToken();
     let orderNumber = Math.floor(Math.random()*1000000);
-    let order:any = [{"user":user, "ordernumber":orderNumber}, {"order":this.cartItems}];
+    let order:any = [{"user": user, "ordernumber": orderNumber}, {"order": this.cartItems}];
     this.api.checkoutApi(order).subscribe();
+    this.toastr.success('Başarıyla sipariş verdin', 'Checkout');
     this.cartService.removeAllCart();
     this.router.navigate(["orders"]);
   }

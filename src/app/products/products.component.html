@@ -236,7 +236,7 @@
                     <header class="d-sm-flex align-items-center border-bottom mb-3 pb-2">
                         <strong class="d-block pt-2">Sonuç:
                             {{ 
-                                (filteredProducts | filterHandler: searchKey:'title').length 
+                                (filteredProducts | filterHandler: (searchKey$|async) !:'title').length 
                             }}
                             Ürünler bulundu
                         </strong>
@@ -275,7 +275,7 @@
                          <!-- Header Section End -->
                         <!-- All and Filtered Product Start  -->
                         <ng-container *ngFor="
-                let item of filteredProducts | filterHandler: searchKey:'title'">
+                let item of filteredProducts | filterHandler: (searchKey$|async)!:'title'">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <figure class="card card-product-grid">
                         <div class="img-wrap pt-2 grid">
@@ -340,7 +340,7 @@
                 <span><strong>Aramanızla eşleşen ürün yok, başka bir şey deneyin.</strong> </span>
             </div>
             <ng-container *ngFor="
-                let item of filteredProducts| filterHandler: searchKey:'title'">
+                let item of filteredProducts| filterHandler: (searchKey$|async)!:'title'">
                 <article class="card card-product-list">
                     <div class="row g-0">
                       <aside class="col-xl-3 col-md-4">

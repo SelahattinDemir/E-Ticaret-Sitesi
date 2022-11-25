@@ -40,4 +40,6 @@ export class HeaderComponent implements OnInit {
     this.apiservice.user.next("");
     localStorage.clear();
   }
+
+  //No need to unsubcribtion bc. wont be destroyed
 }

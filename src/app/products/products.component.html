@@ -1,24 +1,28 @@
-<!-- Category section -->
+<!-- Main Body Start -->
 <body data-new-gr-c-s-check-loaded="14.1055.0" data-gr-ext-installed="">
     <div style="
         margin-top:45px ;
         background-color: #2f4353;
         background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);">
-
-        <!-- Products-->
+        <!-- Products And Filtering-->
         <section class="container padding-y">
             <div class="row">
+                <!-- Filter Section Start-->
                 <aside class="col-lg-3">
-                    <button class="btn btn-outline-secondary mb-3 w-100 d-lg-none"      data-bs-toggle="collapse"
+                    <button 
+                        class="btn btn-outline-secondary mb-3 w-100 d-lg-none"      data-bs-toggle="collapse"
                         data-bs-target="#aside_filter">
                         Filtreyi göster
                     </button>
-
                     <!-- ===== Card for sidebar filter ===== -->
                     <div id="aside_filter" class="collapse card d-lg-block mb-5">
+                        <!-- ===== Category filter ===== -->
                         <article class="filter-group">
                             <header class="card-header">
-                                <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
+                                <a 
+                                    href="#" 
+                                    class="title" 
+                                    data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
                                     <i class="icon-control bi bi-chevron-down"></i> İlgili öğeler
                                 </a>
                             </header>
@@ -26,21 +30,24 @@
                                 <div class="card-body">
                                     <ul class="list-menu">
                                         <li>
-                                            <button style="border: none; background: none" class="category"
-                                                (click)="categoryFilterHandler('')">
-                                                <h6>Tüm Ürünler</h6>
+                                            <button 
+                                                style="border: none; background: none" class="category"
+                                                (click)="categoryFilter('')">
+                                                <h6 style="font-size: 16px;">Tüm Ürünler</h6>
                                             </button>
                                         </li>
                                         <li>
-                                            <button style="border: none; background: none" class="category"
-                                                (click)="categoryFilterHandler('foods')">
-                                                <h6>Yiyecekler</h6>
+                                            <button 
+                                                style="border: none; background: none" class="category"
+                                                (click)="categoryFilter('foods')">
+                                                <h6 style="font-size: 16px;">Yiyecekler</h6>
                                             </button>
                                         </li>
                                         <li>
-                                            <button style="border: none; background: none" class="category"
-                                                (click)="categoryFilterHandler('drinks')">
-                                                <h6>İçecekler</h6>
+                                            <button 
+                                                style="border: none; background: none" class="category"
+                                                (click)="categoryFilter('drinks')">
+                                                <h6 style="font-size: 16px;">İçecekler</h6>
                                             </button>
                                         </li>
                                     </ul>
@@ -48,12 +55,14 @@
                                 <!-- card-body.// -->
                             </div>
                             <!-- collapse.// -->
-                        </article>
-                       
-                        <!-- filter-group // -->
+                        </article> 
+                        <!-- Brand Filter // -->
                         <article class="filter-group">
                             <header class="card-header">
-                                <a href="#" class="title" data-bs-toggle="collapse"
+                                <a 
+                                    href="#" 
+                                    class="title" 
+                                    data-bs-toggle="collapse"
                                     data-bs-target="#collapse_aside_brands">
                                     <i class="icon-control bi bi-chevron-down"></i> Markalar
                                 </a>
@@ -62,8 +71,12 @@
                                 <div class="card-body">
                                     <ng-container *ngFor="let item of uniqueBrands" >
                                     <label class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" value="{{item}}" (change)="brandFilter($event)"/>
-                                        <span class="form-check-label"> {{item}} </span>
+                                        <input 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            value="{{ item }}" 
+                                            (change)="brandFilter($event)"/>
+                                        <span class="form-check-label"> {{ item }} </span>
                                     </label>
                                     </ng-container>
                                     <!-- form-check end.// -->
@@ -72,10 +85,13 @@
                             </div>
                             <!-- collapse.// -->
                         </article>
-                        <!-- temizle butonu eklenecek eventle tetiklenecek pricefilter -->
+                        <!-- Price Filter-->
                         <article class="filter-group">
                             <header class="card-header">
-                                <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
+                                <a 
+                                    href="#" 
+                                    class="title" 
+                                    data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
                                     <i class="icon-control bi bi-chevron-down"></i> Fiyat
                                 </a>
                             </header>
@@ -84,23 +100,36 @@
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <label for="min" class="form-label">Min</label>
-                                            <input class="form-control" id="min" placeholder="0 TL" type="number" #min />
+                                            <input 
+                                                class="form-control" 
+                                                id="min" 
+                                                placeholder="0 TL" 
+                                                type="number" 
+                                                #min />
                                         </div>
                                         <!-- col end.// -->
-
                                         <div class="col-6">
                                             <label for="max" class="form-label">Max</label>
-                                            <input class="form-control" id="max" placeholder="1,000 TL" type="number"
+                                            <input 
+                                                class="form-control" 
+                                                id="max" 
+                                                placeholder="100 TL" 
+                                                type="number"
                                                 #max />
                                         </div>
                                         <!-- col end.// -->
                                     </div>
                                     <!-- row end.// -->
-                                    <button class="btn btn-light w-100" type="button"
+                                    <button 
+                                        class="btn btn-light w-100 mb-2" 
+                                        type="button"
                                         (click)="priceFilter(min.value, max.value)">
                                         Uygula
                                     </button>
-                                    <button class="btn btn-light w-100" type="button" (click)="priceFilter(0, 10000)">
+                                    <button 
+                                        class="btn btn-light w-100" 
+                                        type="button" 
+                                        (click)="priceFilter('', '')">
                                         Sıfırla
                                     </button>
                                 </div>
@@ -108,11 +137,13 @@
                             </div>
                             <!-- collapse.// -->
                         </article>
-                        <!-- filter-group // -->
-
+                        <!-- Ratings Filter-->
                         <article class="filter-group">
                             <header class="card-header">
-                                <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside4">
+                                <a 
+                                    href="#" 
+                                    class="title" 
+                                    data-bs-toggle="collapse" data-bs-target="#collapse_aside4">
                                     <i class="icon-control bi bi-chevron-down"></i> Derecelendirmeler
                                 </a>
                             </header>
@@ -125,7 +156,7 @@
                                             name="flexRadioDefault" 
                                             id="flexRadioDefault1"
                                             checked value="1" 
-                                            (change)="starFilter($event)">
+                                            (change)="starFilter($event)" />
                                         <span class="form-check-label">
                                             <ul class="rating-stars">
                                                 <li>
@@ -142,7 +173,7 @@
                                             name="flexRadioDefault" 
                                             id="flexRadioDefault1" 
                                             value="2"
-                                            (change)="starFilter($event)">
+                                            (change)="starFilter($event)" />
                                        <span class="form-check-label">
                                             <ul class="rating-stars">
                                                 <li>
@@ -159,7 +190,7 @@
                                             name="flexRadioDefault" 
                                             id="flexRadioDefault2" 
                                             value="3"
-                                            (change)="starFilter($event)">
+                                            (change)="starFilter($event)" />
                                         <span class="form-check-label">
                                             <ul class="rating-stars">
                                                 <li>
@@ -169,6 +200,23 @@
                                             </ul>
                                         </span>
                                     </div>
+                                    <div class="form-check">
+                                        <input
+                                          class="form-check-input"
+                                          type="radio"
+                                          name="flexRadioDefault"
+                                          id="flexRadioDefault2"
+                                          value="4"
+                                          (change)="starFilter($event)" />
+                                        <span class="form-check-label">
+                                          <ul class="rating-stars">
+                                            <li>
+                                              <i class="bi bi-star-fill text-dark"></i>
+                                              <strong>0-2.9+</strong>Yıldız
+                                            </li>
+                                          </ul>
+                                        </span>
+                                      </div>
                                     <!-- form-check end.// -->
                                 </form>
                                 <!-- card-body.// -->
@@ -180,11 +228,16 @@
                     <!-- card.// -->
                     <!-- ===== Card for sidebar filter .// ===== -->
                 </aside>
-                <!-- col .// -->
+                <!-- Filter Section Ends -->
+
+                <!-- Products Section Start -->
                 <main class="col-lg-9">
+                    <!-- Header Section Start-->
                     <header class="d-sm-flex align-items-center border-bottom mb-3 pb-2">
                         <strong class="d-block pt-2">Sonuç:
-                            {{ (filteredProducts | filterHandler: searchKey:'title').length }}
+                            {{ 
+                                (filteredProducts | filterHandler: searchKey:'title').length 
+                            }}
                             Ürünler bulundu
                         </strong>
                         <div class="ms-auto">
@@ -195,18 +248,17 @@
                                     name="options" 
                                     id="option1" 
                                     autocomplete="off"  
-                                    (click)="viewHandler('list')">
+                                    (click)="viewHandler('list')" />
                                 <label class="btn btn-success" for="option1">
                                     <i class="bi bi-justify"></i>
                                 </label>
-
                                 <input 
                                     type="radio" 
                                     class="btn-check" 
                                     name="options" 
                                     id="option2" 
                                     autocomplete="off" 
-                                    checked (click)="viewHandler('grid')">
+                                    checked (click)="viewHandler('grid')" />
                                 <label class="btn btn-success " for="option2">
                                     <i class="bi bi-grid-3x3-gap-fill"></i>
                                 </label>
@@ -214,14 +266,14 @@
                             <!-- btn-group end.// -->
                         </div>
                     </header>
-
                     <div *ngIf=" filteredProducts.length === 0">
-                        <span><strong>Aramanızla eşleşen ürün yok, başka bir şey deneyin.</strong> </span>
+                        <span><strong>Aramanızla eşleşen ürün yok, başka bir şey deneyin.</strong> 
+                        </span>
                     </div>
-
                     <!-- ========= content items ========= -->
                     <div class="row" *ngIf="viewGrid">
-                        <!-- products -->
+                         <!-- Header Section End -->
+                        <!-- All and Filtered Product Start  -->
                         <ng-container *ngFor="
                 let item of filteredProducts | filterHandler: searchKey:'title'">
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -237,7 +289,10 @@
                             <p class="text-success">Ücretsiz kargo</p>
                             <br>
                             <ul class="list-group list-group-horizontal title" >
-                                <li class="list-group-item" *ngFor="let star of star"style="width: 50px;">
+                                <li 
+                                    class="list-group-item" 
+                                    *ngFor="let star of star"
+                                    style="width: 50px;">
                                     <i [class]="item.star >= star
                                         ? 'bi bi-star-fill text-success'
                                         : 'bi bi-star text-gray'">
@@ -245,21 +300,31 @@
                                 </li>
                               </ul>
                             <!-- price-wrap.// -->
-                            <button style="border: none; background: none; text-align: left;" (click)="onSelect(item)" class="productid">
-                                <span >{{item.brand}} {{ item.title }}</span>
+                            <button 
+                                style="border: none; background: none; text-align: left;" (click)="onSelect(item)" 
+                                class="productid">
+                                <span >{{ item.brand }} {{ item.title }}</span>
                             </button>
-                            <p class="title mb-2" style="
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                max-width: 100ch;">
+                            <p 
+                                class="title mb-2" 
+                                style="
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 100ch;">
                                 {{ item.description }}
                             </p>
-
-                            <button type="button" class="btn btn-outline-dark" (click)="addtocart(item)">
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-dark" 
+                                (click)="addtocart(item)">
                                 Sepete Ekle
                             </button>
-                            <button type="button" class="btn btn-outline-dark" style="margin-left: 10px;" (click)="onSelect(item)">
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-dark" 
+                                style="margin-left: 10px;" 
+                                (click)="onSelect(item)">
                                 Ürün Detayı
                             </button>
                         </figcaption>
@@ -280,51 +345,70 @@
                     <div class="row g-0">
                       <aside class="col-xl-3 col-md-4">
                         <a href="#" class="img-wrap"> <img src="{{ item.image }}"> </a>
-                      </aside> <!-- col.// -->
+                      </aside> 
+                      <!-- col.// -->
                       <div class="col-xl-6 col-md-5 col-sm-7">
                         <div class="card-body">
-                          <a href="#" class="title h5">{{item.brand}} {{ item.title }} </a>
+                          <a href="#" class="title h5">{{ item.brand }} {{ item.title }} </a>
                           <div class="rating-wrap mb-2">
                             <span class="label-rating text-warning"><ul class="list-group list-group-horizontal title" >
-                                <li class="list-group-item" *ngFor="let star of star"style="width: 50px;">
+                                <li 
+                                    class="list-group-item" 
+                                    *ngFor="let star of star" 
+                                    style="width: 50px">
                                     <i [class]="item.star >= star
                                         ? 'bi bi-star-fill text-success'
                                         : 'bi bi-star text-gray'">
                                     </i>
                                 </li>
-                              </ul></span>
-                      </div> <!-- rating-wrap.// -->
+                              </ul>
+                            </span>
+                      </div> 
+                      <!-- rating-wrap.// -->
                       <p>{{ item.description }}</p>
-                    </div> <!-- card-body.// -->
-                  </div> <!-- col.// -->
+                    </div> 
+                    <!-- card-body.// -->
+                  </div> 
+                  <!-- col.// -->
                   <aside class="col-xl-3 col-md-3 col-sm-5">
                     <div class="info-aside">
                       <div class="price-wrap">
                         <span class="price h5">{{ item.price }} TL</span>  
                         <del class="price-old"> 50 TL</del>
-                      </div> <!-- info-price-detail // -->
+                      </div> 
+                      <!-- info-price-detail // -->
                       <p class="text-success">Ücretsiz kargo</p>
-                      <br>
+                      <br />
                     <div class="mb-3">
-                        <button type="button" class="btn btn-outline-dark" (click)="addtocart(item)">
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark" 
+                            (click)="addtocart(item)">
                             Sepete Ekle
                         </button>
-                        <button type="button" class="btn btn-outline-dark" style="margin-top: 10px;" (click)="onSelect(item)">
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark" 
+                            style="margin-top: 10px;" 
+                            (click)="onSelect(item)">
                             Ürün Detayı
                         </button>
                     </div>
-                </div> <!-- info-aside.// -->
-              </aside> <!-- col.// -->
-            </div> <!-- row.// -->
-          </article>
-                </ng-container>
-            </div>
-            <hr />
-    <!-- ========= content items .// ========= -->
-                </main>
-<!-- col .// -->
-            </div>
-<!-- row .// -->
-        </section>
+                </div> 
+                <!-- info-aside.// -->
+              </aside> 
+              <!-- col.// -->
+            </div> 
+            <!-- row.// -->
+                </article>
+            </ng-container>
+        </div>
+        <hr />
+        <!-- All and Filtered Product End  -->
+        </main>
+    <!-- col .// -->
+        </div>
+    <!-- row .// -->
+      </section>
     </div>
 </body>

@@ -15,7 +15,7 @@
                       <button routerLink="/products" class="btn btn-primary col-md-4 offset-md-4 w-10">Şimdi satın al</button>
                     </div>
                   </div>
-                  <div class="pt-3"style="margin-left:30px" *ngIf="orders.length != 0">Sipariş Numarası:<strong> {{orders[0].ordernumber}}</strong> 
+                  <div class="pt-3" style="margin-left:30px" *ngIf="orders.length != 0">Sipariş Numarası:<strong> {{ orders[0].ordernumber }}</strong> 
                   </div>
                   <hr>
                   <div class="product" *ngFor="let item of orders[1].order">

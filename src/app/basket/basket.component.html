@@ -12,23 +12,22 @@
           <!-- Empty Cart Section Start-->
               <div class="items">
                 <div class="container" *ngIf="cartItems.length == 0">
-                  <div class="row mt-5">
-                    <!-- <h4 class="col mt-5 col-md-4 offset-md-4" style="padding-left: 30px;">Sepetiniz boş!</h4>
-                    <button routerLink="/products" class="btn btn-primary col-md-4 offset-md-4 w-25">Şimdi satın al</button> -->
-                    <h4 class="col mt-5 col-md-4 offset-md-4" style="padding-left: 30px;">
-                      Sepetiniz boş!
-                    </h4>
-                    <button
-                      routerLink="/products"
-                      class="btn btn-primary col-md-4 offset-md-4 w-25"
-                    >
-                    Şimdi satın al
-                    </button>
+                  <div class="d-flex justify-content-center mt-5 pt-5">
+                    <div class="p-2">
+                      <h4 class="mt-2">Sepetiniz boş!</h4>
+                    </div>
+                    <div class="p-2">
+                      <button
+                        routerLink="/products"
+                        class="btn btn-primary">
+                        Şimdi satın al
+                      </button>
+                    </div>
                   </div>
                 </div>
            <!-- Empty Cart Section End-->
            <!--  Cart items  Start-->
-                <div class="product" *ngFor="let item of cartItems; let i = index">
+                <div class="product" *ngFor="let item of cartItems; index as i">
                   <div class="row">
                     <div class="col-md-3">
                       <img class="img-fluid mx-auto d-block image" src="{{ item.image }}">
@@ -52,7 +51,7 @@
                               type="number" 
                               value="1" 
                               class="form-control quantity-input"
-                              (change)="quantity($event,i)">
+                              (change)="quantity($event, i)">
                           </div>
                           <div class="col-md-3 price">
                             <span>{{ item.total | number}} TL</span>
@@ -93,7 +92,13 @@
                   <span class="text">Toplam</span>
                   <span class="price">{{ grandTotal | number}} TL</span>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block"(click)="checkout()" routerLink="orders">Ödeme</button>
+                <button 
+                  type="button" 
+                  class="btn btn-primary btn-lg btn-block" 
+                  (click)="checkout()" 
+                  routerLink="orders">
+                  Ödeme
+                </button>
               </div>
             </div>
           </div>

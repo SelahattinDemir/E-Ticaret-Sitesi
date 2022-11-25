@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../Services/cart.service';
 import { ApiService } from '../Services/api.service';
 import { Router } from '@angular/router';
@@ -9,21 +9,22 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit {
+export class BasketComponent implements OnInit, OnDestroy {
 
-  //At beginning getting data dynamically at cartItems then all action made by method
+  private sub: any;
+  //At beginning getting data dynamically at cartItems then all quantity actions made by method
   public cartItems: any = [];
   public grandTotal: number = 0;
 
   constructor(private cartService: CartService, private api:ApiService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
+    this.sub = this.cartService.getProducts()
       .subscribe(res => {
         this.cartItems = res;
         this.cartItems.forEach((item: any) => {
           //assigning quantity and total for checkout
-          Object.assign(item, { quantity: 1, total: Number(item.price) });
+          Object.assign(item, {quantity: 1, total: Number(item.price)});
           //deleting comment and star bc. it is unnecessary for order 
           delete item.comment;
           delete item.star;
@@ -66,6 +67,10 @@ export class BasketComponent implements OnInit {
     this.toastr.success('Başarıyla sipariş verdin', 'Checkout');
     this.cartService.removeAllCart();
     this.router.navigate(["orders"]);
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe()
   }
 }
 

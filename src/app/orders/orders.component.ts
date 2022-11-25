@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../Services/api.service';
 
 @Component({
@@ -6,20 +6,23 @@ import { ApiService } from '../Services/api.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   
+  private sub$: any;
   public orders: any = [];
 
   constructor(private api: ApiService) { }
 
   // taking orders from server
   ngOnInit(): void {
-    this.api.ordersApi().subscribe(
+    this.sub$ = this.api.ordersApi().subscribe(
       res => {
         this.orders = res;
-        console.log(this.orders); 
       }
     )
   }
 
+  ngOnDestroy(): void {
+    this.sub$?.unsubscribe()
+  }
 }

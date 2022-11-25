@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 
 import { product } from '../models/product';
 @Injectable({
@@ -11,23 +10,29 @@ import { product } from '../models/product';
 export class ApiService {
 
   public user = new BehaviorSubject<any>("");
+  public url = new BehaviorSubject ("");
   private baseUrl: string = "http://localhost:3000/";
 
-  constructor(private http : HttpClient, private router:Router) {}
+  constructor(private http: HttpClient) {}
 
-//posting to db.json for fake json server firstly you have to start json server for working json-server --watch db.json 
-
-//Http requests for all back-end operations
-
-//Product and user requests
-getAllProductApi() {
-  return this.http.get<product>(`${this.baseUrl}products`)
-    .pipe(map((res: any) => {
-      return res;
+  //posting to db.json for fake json server firstly you have to start json server for working json-server --watch db.json 
+  //Http requests for all back-end operations 
+  //Product and user requests
+  getAllProductApi() {
+    return this.http.get<product>(`${this.baseUrl}products`)
+      .pipe(map((res: any) => {
+        return res;
     }))
   }
 
-  checkoutApi(itemList:any){
+  filterApi(filteringUrl: string) {
+    return this.http.get<product>(`${this.baseUrl}products${filteringUrl}`)
+      .pipe(map((res: any) => {
+        return res;
+      }))
+  }
+
+  checkoutApi(itemList: any){
     return this.http.post<any>(`${this.baseUrl}orders`,itemList);
   }
 
@@ -37,12 +42,12 @@ getAllProductApi() {
     }))
   }
 
-  //Signup and login API's
-  signUp(signupForm:any){
-    return this.http.post<any>(`${this.baseUrl}signupUsers`,signupForm.value);
+  //Signup and login request
+  signUp(signupForm: any){
+    return this.http.post<any>(`${this.baseUrl}signupUsers`, signupForm.value);
   }
 
-  login(email:any,password:any) {
+  login(email: string, password: string) {
     return this.http.get(`${this.baseUrl}signupUsers/?email=${email}&password=${password}`);
   }
 
@@ -50,32 +55,31 @@ getAllProductApi() {
    return localStorage.getItem("token");
   }
 
-  //ADMIN SECTION
-  // HEPSİ APİ İSTEĞİYLE YAPILMALI ÇÜNKÜ SERVER DA DEĞİŞMELİ 
+  //ADMIN requests
   postItemApi(data : any){
-    return this.http.post<any>(`${this.baseUrl}products`,data)
-    .pipe(map((res:any)=>{
+    return this.http.post<any>(`${this.baseUrl}products`, data)
+    .pipe(map((res: any) => {
       return res;
     }))
   }
 
-  deleteItemApi(id : number){
+  deleteItemApi(id: number){
     return this.http.delete<any>(`${this.baseUrl}products/${id}`)
-    .pipe(map((res:any)=>{
+    .pipe(map((res: any) => {
       return res;
     }))
   }
 
-  updateItemApi(data : any, id : number){
-    return this.http.put<any>(`${this.baseUrl}products/${id}`,data)
-    .pipe(map((res:any)=>{
+  updateItemApi(data: any, id: number){
+    return this.http.put<any>(`${this.baseUrl}products/${id}`, data)
+    .pipe(map((res: any) => {
       return res;
     }))
   }
   
   getItemApi(){
     return this.http.get<any>(`${this.baseUrl}products`)
-    .pipe(map((res:any)=>{
+    .pipe(map((res: any) => {
       return res;
     }))
   }

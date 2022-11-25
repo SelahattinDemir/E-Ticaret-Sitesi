@@ -1,35 +1,54 @@
+<!-- Dialog Form Section -->
 <div mat-dialog-title>Öğe Listesi Ekle</div>
 <div mat-dialog-content>
  <form [formGroup]="formValue">
   <mat-form-field appearance="fill">
     <mat-label>İsim</mat-label>
-    <input matInput formControlName="title" >
+    <input matInput formControlName="title" />
+    <mat-error *ngIf="errorHandling('title', 'required')">
+      <strong>İsim</strong> girmelisiniz
+   </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Marka</mat-label>
-    <input matInput formControlName="brand">
+    <input matInput formControlName="brand" />
+    <mat-error *ngIf="errorHandling('brand', 'required')">
+      <strong>Marka</strong> girmelisiniz
+   </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Fiyat TL</mat-label>
-    <input type="number" formControlName="price"matInput>
+    <input type="number" formControlName="price" matInput />
+    <mat-error *ngIf="errorHandling('price', 'required')">
+      <strong>Fiyat</strong> girmelisiniz
+   </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Kategori</mat-label>
     <mat-select  formControlName="category" >
       <mat-option value="foods">Yiyecek</mat-option>
       <mat-option value="drinks">İçecek</mat-option>
+      <mat-error *ngIf="errorHandling('category', 'required')">
+        <strong>Kategori</strong> girmelisiniz
+     </mat-error>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Açıklama</mat-label>
     <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="errorHandling('description', 'required')">
+      <strong>Açıklama</strong> girmelisiniz
+   </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Resim URL</mat-label>
     <textarea matInput formControlName="image"></textarea>
+    <mat-error *ngIf="errorHandling('image', 'pattern')">
+      <strong>Resim URL</strong> girmelisiniz
+   </mat-error>
   </mat-form-field>
   <div>Ön izleme</div>
-  <img src="{{formValue.value.image}}" alt="">
+  <img style="width: 100px;" src="{{formValue.value.image}}" alt="">
  </form>
 </div>
 <div mat-dialog-actions [align]="'end'">

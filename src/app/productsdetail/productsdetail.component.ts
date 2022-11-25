@@ -24,16 +24,21 @@ export class ProductsdetailComponent implements OnInit, OnDestroy {
   public rating = 3;
   private itemId: any;
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private cartService: CartService, private toastr: ToastrService, private formBuilder:  FormBuilder, private http: HttpClient) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private api: ApiService, 
+    private cartService: CartService, 
+    private toastr: ToastrService, 
+    private formBuilder:  FormBuilder, 
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     //With paramMap you can route multiple page with only one template 
     this.itemId = Number(this.route.snapshot.paramMap.get("id"));
     this.currentUrl =`?id=${this.itemId}`;
     //For template view taking data from server 
-    this.sub$ = this.api.filterApi(this.currentUrl).subscribe(
-      res => {
-        this.productsDetail = res;
+    this.sub$ = this.api.filterApi(this.currentUrl).subscribe((res) => {
+      this.productsDetail = res;
     })
     this.commentForm = this.formBuilder.group({
       username: ["", Validators.required],
@@ -49,17 +54,26 @@ export class ProductsdetailComponent implements OnInit, OnDestroy {
 
   submit(){
     let date = new Date().toString();
-    let comment = {"username": this.commentForm.value.username, "comment": this.commentForm.value.comment};
-    Object.assign(comment, {"time": date})
-    // STAR service yazılacak EKLENECEK 
+    let comment = {
+      "username": this.commentForm.value.username, 
+      "comment": this.commentForm.value.comment
+    };
+    Object.assign(comment, {"time": date});
+    //Star section
+    //In real application this should not divided by 2 this is only for mock up
+    this.productsDetail[0].star =
+      (this.productsDetail[0].star + this.rating) / 2;
+    // Comment section
     this.productsDetail[0].comments.push(comment);
-    this.api.updateItemApi(this.productsDetail[0], this.itemId).subscribe(res => {
-    this.commentForm.reset();
-    this.toastr.success('Ürün Eklendi', 'Success');;
-  })
+    this.api
+      .updateItemApi(this.productsDetail[0], this.itemId)
+      .subscribe(res => {
+        this.commentForm.reset();
+        this.toastr.success('Ürün Eklendi', 'Success');;
+    });
   }
 
   ngOnDestroy(): void {
-    this.sub$?.unsubscribe()
+    this.sub$?.unsubscribe();
 }
 }

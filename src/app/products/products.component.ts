@@ -27,12 +27,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public viewGrid: boolean = true;
   public uniqueBrands: any = [];
 
-  constructor(private api: ApiService, private cartService: CartService, private router: Router, private toastr: ToastrService, private productFilters: ProductfiltersService) { }
+  constructor(
+    private api: ApiService, 
+    private cartService: CartService, 
+    private router: Router, 
+    private toastr: ToastrService, 
+    private productFilters: ProductfiltersService) { }
 
   ngOnInit(): void {
     //getting product from server
-    this.sub1$ = this.api.getAllProductApi()
-    .subscribe(res => {
+    this.sub1$ = this.api.getAllProductApi().subscribe(res => {
       this.products = res;
       this.filteredProducts = res;
       //checking unique brands for same brand inputs from db 
@@ -45,13 +49,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
     // data transfer for search handling ( filter in subcribe not working so pipe is used)
     // async pipe usage case
-    this.searchKey$ = this.cartService.search
-    this.sub2$ = this.productFilters.data.subscribe(res => this.filteredProducts = res)
+    this.searchKey$ = this.cartService.search;
+    this.sub2$ = this.productFilters.data.subscribe(
+      (res) => (this.filteredProducts = res));
   }
 
   // Sending element id to product detail paramMap
   onSelect(item: any) {
-    this.router.navigate(["/products", item.id])
+    this.router.navigate(['/products', item.id]);
   }
 
   // adding item to cart
@@ -62,29 +67,29 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   //changing view style
   viewHandler(category: string) {
-    if(category === "grid") {
+    if(category === 'grid') {
       this.viewGrid = true;
     }
-    if(category === "list"){
+    if(category === 'list'){
       this.viewGrid = false;
     }
   }
 
   //Filtering operation events(handling by productfilter.service)
   categoryFilter(category: string) {
-    this.productFilters.categoryFilterService(category)
+    this.productFilters.categoryFilterService(category);
   }
 
   priceFilter(min: any, max: any) {
-    this.productFilters.priceFilterService(min, max)
+    this.productFilters.priceFilterService(min, max);
   }
 
   brandFilter(brand: any) { 
-    this.productFilters.brandFilterService(brand)
+    this.productFilters.brandFilterService(brand);
   }
 
   starFilter(star: any){
-    this.productFilters.starFilterService(star)
+    this.productFilters.starFilterService(star);
   }
 
   //Unsubscribing to the subscriptions

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { ApiService } from '../Services/api.service';
 import { CartService } from '../Services/cart.service';
 
@@ -14,7 +16,7 @@ export class ProductsdetailComponent implements OnInit {
   public productsDetail: any;
   public currentId: any;
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private api: ApiService, private cartService: CartService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
 //With paramMap you can route multiple page with only one template 
@@ -29,6 +31,7 @@ export class ProductsdetailComponent implements OnInit {
 
   addtocart(item: any){
     this.cartService.addtoCart(item);
+    this.toastr.success('Ürün Sepete Eklendi', 'Checkout');
   }
 
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 import { ApiService } from '../Services/api.service';
 import { passwordMatchValidatorService } from '../Services/passwordMatchValidator.service';
@@ -13,9 +14,10 @@ import { usernameValidator } from '../Services/regexValidator.service';
   styleUrls: ['./signup.component.css']
 })
 
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
-  public signupForm!: FormGroup
+  public signupForm!: FormGroup;
+  private sub$?: Subscription;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private match: passwordMatchValidatorService, private toastr: ToastrService) { }
 
@@ -45,13 +47,18 @@ export class SignupComponent implements OnInit {
   }
 
   // sending data with signUp api 
+  //To show error message subcribe is used
   signUp(){
-    this.api.signUp(this.signupForm).subscribe(res => {
-      this.toastr.success('Başarıyla kaydoldunuz');
-      this.signupForm.reset();
-      this.router.navigate(["login"])
-    }, err => {
-        this.toastr.success('Bir şeyler yanlış gitti');
+    this.sub$ = this.api.signUp(this.signupForm).subscribe(res => {
+    this.toastr.success('Başarıyla kaydoldunuz');
+    this.signupForm.reset();
+    this.router.navigate(["login"])
+  }, err => {
+      this.toastr.success('Bir şeyler yanlış gitti');
     })
+  }
+
+  ngOnDestroy(): void {
+    this.sub$?.unsubscribe()
   }
 }

@@ -16,10 +16,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="products">Ürünler</a>
+          <a class="nav-link" routerLink="products" style="font-size: 16px;">
+            Ürünler
+            <span class="sr-only">(geçerli)</span> 
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="orders">Siparişlerim</a>
+          <a class="nav-link" routerLink="orders" style="font-size: 16px;">Siparişlerim</a>
         </li>
       </ul>
       
@@ -36,17 +39,16 @@
       </form>
     </div>
 
-     <!-- logout-login button -->
+     <!-- username and logout-login button -->
     <button 
       *ngIf="user" 
       (click)="logout()" 
       routerLink="login" 
       class="btn" 
       style="color:white">
-      <span style="color: white;padding-top: 10px;">{{user.username}}</span>
+      <span style="color: white;padding-top: 10px; padding-right: 30px">{{user.username}}</span>
       Çıkış
     </button>
-  
     <button 
       *ngIf="!user" 
       routerLink="login" 
@@ -54,7 +56,6 @@
       style="color:white">
       Giriş
     </button>
-  
     <button 
       *ngIf="!user" 
       routerLink="signup" 
@@ -62,8 +63,7 @@
       style="color:white">
       Kayıt Ol
     </button>
-    
-     <!--basket with counter -->
+    <!--basket with counter -->
     <button 
       routerLink="basket" 
       class="btn" 

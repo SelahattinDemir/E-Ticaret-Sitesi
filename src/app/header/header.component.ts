@@ -9,26 +9,27 @@ import { CartService } from '../Services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public totalItem : number = 0;
+  //template var.
+  public totalItem: number = 0;
   public searchTerm: string = "";
-  public user:any;
+  public user: any;
 
-  constructor(private cartService : CartService, private apiservice:ApiService) { }
+  constructor(private cartService: CartService, private apiservice: ApiService) { }
 
   ngOnInit(): void {
-    // checking user for logout template
+    // checking user log for opening logout template
     this.apiservice.user.subscribe((res) => {
       this.user = res;
     })
     //taking data for template of total cart item number
     this.cartService.getProducts()
-    .subscribe(res=>{
+    .subscribe(res => {
       this.totalItem = res.length;
     })
   }
 
-  //checking ınput to search
-  search(event:any){
+  //taking value from search bar to send service
+  search(event: any){
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm);
     this.cartService.search.next(this.searchTerm);
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit {
 
   // clearing local storage for guard and isloggedin for logout button
   logout(){
-    this.apiservice.user.next("")
-    localStorage.clear()
+    this.apiservice.user.next("");
+    localStorage.clear();
   }
 }

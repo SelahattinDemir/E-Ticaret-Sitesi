@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.comp
 })
 export class UnsavedGuard implements CanDeactivate<AdminDashboardComponent> {
   canDeactivate(component: AdminDashboardComponent): boolean {
+    // running according to canExit output which in dashboard comp.
     return component.canExit()
   }
 

@@ -11,7 +11,7 @@ import { AuthGuard } from './Services/auth.guard.service';
 import { UnsavedGuard } from './Services/unsaved.guard.service';
 import { SignupComponent } from './signup/signup.component';
 
-//page routes for components
+//page routes for components with guards
 const routes: Routes = [
   {path:'products', component: ProductsComponent, canActivate:[AuthGuard]},
   {path:'products/:id', component: ProductsdetailComponent, canActivate:[AuthGuard]},

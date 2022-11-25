@@ -10,6 +10,7 @@ import { ApiService } from '../Services/api.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   public loginForm!: FormGroup;
@@ -18,16 +19,17 @@ export class LoginComponent implements OnInit {
     private router: Router, private api: ApiService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.loginForm=this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       //validators for login
-      email:["admin@admin",Validators.required],
-      password:["123456",Validators.required]
+      email: ["admin@admin", Validators.required],
+      password: ["123456", Validators.required]
     })
   }
 
   login(){
-    //getting data from json and checking input matching
-    this.api.login(this.loginForm.value.email,this.loginForm.value.password).subscribe((data:any)=>{
+    //getting data from json and checking input matching and adding their JWT to local storage
+    //also routing according to their role 
+    this.api.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data: any) => {
       if(data.length !== 0){
         this.api.user.next(data[0]);
         this.loginForm.reset();

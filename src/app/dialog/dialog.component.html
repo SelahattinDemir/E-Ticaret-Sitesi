@@ -1,0 +1,38 @@
+<div mat-dialog-title>Öğe Listesi Ekle</div>
+<div mat-dialog-content>
+ <form [formGroup]="formValue">
+  <mat-form-field appearance="fill">
+    <mat-label>İsim</mat-label>
+    <input matInput formControlName="title" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Marka</mat-label>
+    <input matInput formControlName="brand">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Fiyat TL</mat-label>
+    <input type="number" formControlName="price"matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Kategori</mat-label>
+    <mat-select  formControlName="category" >
+      <mat-option value="foods">Yiyecek</mat-option>
+      <mat-option value="drinks">İçecek</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Açıklama</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Resim URL</mat-label>
+    <textarea matInput formControlName="image"></textarea>
+  </mat-form-field>
+  <div>Ön izleme</div>
+  <img src="{{formValue.value.image}}" alt="">
+ </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="primary" (click)="postItem()">{{actionButton}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close (click)="close()">Kapat</button>
+</div>

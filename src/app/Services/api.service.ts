@@ -27,9 +27,6 @@ export class ApiService {
 
   filterApi(filteringUrl: string) {
     return this.http.get<product>(`${this.baseUrl}products${filteringUrl}`)
-      .pipe(map((res: any) => {
-        return res;
-      }))
   }
 
   checkoutApi(itemList: any){
@@ -58,23 +55,14 @@ export class ApiService {
   //ADMIN requests
   postItemApi(data : any){
     return this.http.post<any>(`${this.baseUrl}products`, data)
-    .pipe(map((res: any) => {
-      return res;
-    }))
   }
 
   deleteItemApi(id: number){
     return this.http.delete<any>(`${this.baseUrl}products/${id}`)
-    .pipe(map((res: any) => {
-      return res;
-    }))
   }
 
   updateItemApi(data: any, id: number){
     return this.http.put<any>(`${this.baseUrl}products/${id}`, data)
-    .pipe(map((res: any) => {
-      return res;
-    }))
   }
   
   getItemApi(){
@@ -83,5 +71,4 @@ export class ApiService {
       return res;
     }))
   }
-
 }

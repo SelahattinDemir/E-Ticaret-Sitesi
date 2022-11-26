@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CartService } from '../Services/cart.service';
-import { ApiService } from '../Services/api.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
+import { CartService } from '../../Services/cart.service';
+import { ApiService } from '../../Services/api.service';
 
 @Component({
   selector: 'app-basket',

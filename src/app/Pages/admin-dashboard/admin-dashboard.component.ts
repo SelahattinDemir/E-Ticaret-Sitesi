@@ -5,9 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
-import { ApiService } from '../Services/api.service';
-import { DialogComponent } from '../dialog/dialog.component';
-import { ConfirmDialogComponent, ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.component';
+import { ApiService } from '../../Services/api.service';
+import { DialogComponent } from '../../Component/dialog/dialog.component';
+import { ConfirmDialogComponent, ConfirmDialogModel } from '../../Component/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-admin-dashboard',

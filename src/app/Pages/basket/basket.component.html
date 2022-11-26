@@ -92,13 +92,15 @@
                   <span class="text">Toplam</span>
                   <span class="price">{{ grandTotal | number}} TL</span>
                 </div>
-                <button 
+                <div *ngIf="cartItems.length != 0">
+                  <button 
                   type="button" 
                   class="btn btn-primary btn-lg btn-block" 
                   (click)="checkout()" 
                   routerLink="orders">
                   Ödeme
                 </button>
+                </div>      
               </div>
             </div>
           </div>
@@ -106,3 +108,5 @@
       </div>
     </section>
   </main>
+  <!-- footer section-->
+  <app-footer></app-footer>

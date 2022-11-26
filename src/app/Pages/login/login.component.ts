@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { ApiService } from '../Services/api.service';
+import { ApiService } from '../../Services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       //validators for login
-      email: ["admin@admin", Validators.required],
-      password: ["123456", Validators.required]
+      email: ["", Validators.required],
+      password: ["", Validators.required]
     })
   }
 

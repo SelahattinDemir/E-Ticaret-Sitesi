@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
-import { ApiService } from '../Services/api.service';
-import { CartService } from '../Services/cart.service';
-import { ProductfiltersService } from '../Services/productfilters.service';
+import { ApiService } from '../../Services/api.service';
+import { CartService } from '../../Services/cart.service';
+import { ProductfiltersService } from '../../Services/productfilters.service';
 
 @Component({
   selector: 'app-products',
@@ -44,8 +44,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.products.forEach((element: any) => {
         return this.uniqueBrands.push(element.brand);
       });
-      this.uniqueBrands = this.uniqueBrands.filter((item: any, 
-        index: any) => this.uniqueBrands.indexOf(item) === index);
     });
     // data transfer for search handling ( filter in subcribe not working so pipe is used)
     // async pipe usage case
@@ -73,23 +71,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if(category === 'list'){
       this.viewGrid = false;
     }
-  }
-
-  //Filtering operation events(handling by productfilter.service)
-  categoryFilter(category: string) {
-    this.productFilters.categoryFilterService(category);
-  }
-
-  priceFilter(min: any, max: any) {
-    this.productFilters.priceFilterService(min, max);
-  }
-
-  brandFilter(brand: any) { 
-    this.productFilters.brandFilterService(brand);
-  }
-
-  starFilter(star: any){
-    this.productFilters.starFilterService(star);
   }
 
   //Unsubscribing to the subscriptions

@@ -36,10 +36,13 @@
                             </div>
                           </div>
                           <div class="col-md-3 g-4 quantity">
-                            <span>Miktar:{{ item.quantity }}</span>
+                            <span><strong>Miktar:</strong>{{ item.quantity }}</span>
                           </div>
                           <div class="col-md-3 g-4 price">
-                            <span>Fiyat: {{ item.total }} TL</span>       
+                            <span><strong>Fiyat:</strong> {{ item.total }} TL</span>
+                          </div>
+                          <div class="ordertext">
+                            <p>Siparişiniz alındı...</p>       
                           </div>              
                         </div>
                       </div>
@@ -52,3 +55,5 @@
       </div>
   </section>
 </main>
+<!-- footer section-->
+<app-footer></app-footer>

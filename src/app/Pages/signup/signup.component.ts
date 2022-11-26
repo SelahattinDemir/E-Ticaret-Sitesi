@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 
-import { ApiService } from '../Services/api.service';
-import { passwordMatchValidatorService } from '../Services/passwordMatchValidator.service';
-import { usernameValidator } from '../Services/regexValidator.service';
+import { ApiService } from '../../Services/api.service';
+import { passwordMatchValidatorService } from '../../Services/passwordMatchValidator.service';
+import { usernameValidator } from '../../Services/regexValidator.service';
 
 @Component({
   selector: 'app-signup',

@@ -1,0 +1,195 @@
+<!-- Main Body Start -->
+<body data-new-gr-c-s-check-loaded="14.1055.0" data-gr-ext-installed="">
+    <div style="
+        margin-top:45px ;
+        background-color: #2f4353;
+        background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);">
+        <!-- Products And Filtering-->
+        <section class="container padding-y">
+            <div class="row">
+                <aside class="col-lg-3">
+                    <h1 style="padding-top: 15px;"><strong>Filtrele</strong></h1>
+                    <app-filter-bar></app-filter-bar>
+                </aside>
+                <!-- Products Section Start -->
+                <main class="col-lg-9">
+                    <!-- Header Section Start-->
+                    <header class="d-sm-flex align-items-center border-bottom mb-3 pb-2">
+                        <strong class="d-block pt-2">Sonuç:
+                            {{ 
+                                (filteredProducts | filterHandler: (searchKey$|async) !:'title').length 
+                            }}
+                            Ürünler bulundu
+                        </strong>
+                        <div class="ms-auto">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <input 
+                                    type="radio" 
+                                    class="btn-check" 
+                                    name="options" 
+                                    id="option1" 
+                                    autocomplete="off"  
+                                    (click)="viewHandler('list')" />
+                                <label class="btn btn-success" for="option1">
+                                    <i class="bi bi-justify"></i>
+                                </label>
+                                <input 
+                                    type="radio" 
+                                    class="btn-check" 
+                                    name="options" 
+                                    id="option2" 
+                                    autocomplete="off" 
+                                    checked (click)="viewHandler('grid')" />
+                                <label class="btn btn-success " for="option2">
+                                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                                </label>
+                            </div>
+                            <!-- btn-group end.// -->
+                        </div>
+                    </header>
+                    <div *ngIf=" filteredProducts.length === 0">
+                        <span><strong>Aramanızla eşleşen ürün yok, başka bir şey deneyin.</strong> 
+                        </span>
+                    </div>
+                    <!-- ========= content items ========= -->
+                    <div class="row" *ngIf="viewGrid">
+                         <!-- Header Section End -->
+                        <!-- All and Filtered Product Start  -->
+                        <ng-container *ngFor="
+                let item of filteredProducts | filterHandler: (searchKey$|async)!:'title'">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <figure class="card card-product-grid">
+                        <div class="img-wrap pt-2 grid">
+                            <img src="{{ item.image }}" />
+                        </div>
+                        <figcaption class="info-wrap border-top">
+                            <div class="price-wrap">
+                                <strong class="price">{{ item.price }} TL</strong>
+                                <del class="price-old">50.00 TL</del>
+                            </div>
+                            <p class="text-success">Ücretsiz kargo</p>
+                            <br>
+                            <ul class="list-group list-group-horizontal title" >
+                                <li 
+                                    class="list-group-item" 
+                                    *ngFor="let star of star"
+                                    style="width: 50px;">
+                                    <i [class]="item.star >= star
+                                        ? 'bi bi-star-fill text-success'
+                                        : 'bi bi-star text-gray'">
+                                    </i>
+                                </li>
+                              </ul>
+                            <!-- price-wrap.// -->
+                            <button 
+                                style="border: none; background: none; text-align: left;" (click)="onSelect(item)" 
+                                class="productid">
+                                <span >{{ item.brand }} {{ item.title }}</span>
+                            </button>
+                            <p 
+                                class="title mb-2" 
+                                style="
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 100ch;">
+                                {{ item.description }}
+                            </p>
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-dark" 
+                                (click)="addtocart(item)">
+                                Sepete Ekle
+                            </button>
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-dark" 
+                                style="margin-left: 10px;" 
+                                (click)="onSelect(item)">
+                                Ürün Detayı
+                            </button>
+                        </figcaption>
+                    </figure>
+                </div>
+                <!-- col end.// -->
+            </ng-container>
+        </div>
+        <!-- row end.// -->
+        <div class="row" *ngIf="!viewGrid">
+            <!-- products -->
+            <div *ngIf=" filteredProducts.length === 0">
+                <span><strong>Aramanızla eşleşen ürün yok, başka bir şey deneyin.</strong> </span>
+            </div>
+            <ng-container *ngFor="
+                let item of filteredProducts| filterHandler: (searchKey$|async)!:'title'">
+                <article class="card card-product-list">
+                    <div class="row g-0">
+                      <aside class="col-xl-3 col-md-4">
+                        <a href="#" class="img-wrap"> <img src="{{ item.image }}"> </a>
+                      </aside> 
+                      <!-- col.// -->
+                      <div class="col-xl-6 col-md-5 col-sm-7">
+                        <div class="card-body">
+                          <a href="#" class="title h5">{{ item.brand }} {{ item.title }} </a>
+                          <div class="rating-wrap mb-2">
+                            <span class="label-rating text-warning"><ul class="list-group list-group-horizontal title" >
+                                <li 
+                                    class="list-group-item" 
+                                    *ngFor="let star of star" 
+                                    style="width: 50px">
+                                    <i [class]="item.star >= star
+                                        ? 'bi bi-star-fill text-success'
+                                        : 'bi bi-star text-gray'">
+                                    </i>
+                                </li>
+                              </ul>
+                            </span>
+                      </div> 
+                      <!-- rating-wrap.// -->
+                      <p>{{ item.description }}</p>
+                    </div> 
+                    <!-- card-body.// -->
+                  </div> 
+                  <!-- col.// -->
+                  <aside class="col-xl-3 col-md-3 col-sm-5">
+                    <div class="info-aside">
+                      <div class="price-wrap">
+                        <span class="price h5">{{ item.price }} TL</span>  
+                        <del class="price-old"> 50 TL</del>
+                      </div> 
+                      <!-- info-price-detail // -->
+                      <p class="text-success">Ücretsiz kargo</p>
+                      <br />
+                    <div class="mb-3">
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark" 
+                            (click)="addtocart(item)">
+                            Sepete Ekle
+                        </button>
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark" 
+                            style="margin-top: 10px;" 
+                            (click)="onSelect(item)">
+                            Ürün Detayı
+                        </button>
+                    </div>
+                </div> 
+                <!-- info-aside.// -->
+              </aside> 
+              <!-- col.// -->
+            </div> 
+            <!-- row.// -->
+                </article>
+            </ng-container>
+        </div>
+        <hr />
+        <!-- All and Filtered Product End  -->
+        </main>
+    <!-- col .// -->
+        </div>
+    <!-- row .// -->
+      </section>
+    </div>
+</body>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../Services/api.service';
-import { CartService } from '../Services/cart.service';
+import { ApiService } from '../../Services/api.service';
+import { CartService } from '../../Services/cart.service';
 
 @Component({
   selector: 'app-header',

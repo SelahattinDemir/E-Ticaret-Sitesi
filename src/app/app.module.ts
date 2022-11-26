@@ -20,7 +20,7 @@ import { ProductsComponent } from './Pages/products/products.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { ProductsdetailComponent } from './Pages/productsdetail/productsdetail.component';
 import { ApiService } from './Services/api.service';
-import { FilterHandlerPipe } from './Component/filtered/filter-handler.pipe';
+import { FilterHandlerPipe } from './filtered/filter-handler.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasketComponent } from './Pages/basket/basket.component';
 import { OrdersComponent } from './Pages/orders/orders.component';

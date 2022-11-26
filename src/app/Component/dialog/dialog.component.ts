@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { ApiService } from '../Services/api.service';
-import { product } from '../models/product';
+import { ApiService } from '../../Services/api.service';
+import { product } from '../../models/product';
 
 @Component({
   selector: 'app-dialog',

@@ -1,0 +1,225 @@
+<!-- Filter Section Start-->
+    <button 
+        class="btn btn-outline-secondary mb-3 w-100 d-lg-none"      data-bs-toggle="collapse"
+        data-bs-target="#aside_filter">
+        Filtreyi göster
+    </button>
+    <!-- ===== Card for sidebar filter ===== -->
+    <div id="aside_filter" class="collapse card d-lg-block mb-5">
+        <!-- ===== Category filter ===== -->
+        <details class="filter-group">
+            <summary class="card-header">
+                Kategoriler
+                <a 
+                    class="title" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#collapse_aside1"> 
+                </a>
+            </summary>
+            <div class="collapse show" id="collapse_aside1">
+                <div class="card-body">
+                    <ul class="list-menu">
+                        <li>
+                            <button 
+                                style="border: none; background: none;" class="category"
+                                (click)="categoryFilter('')">
+                                <h6 style="font-size: 16px;">Tüm Ürünler</h6>
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                style="border: none; background: none" 
+                                class="category"
+                                (click)="categoryFilter('foods')">
+                                <h6 style="font-size: 16px;">Yiyecekler</h6>
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                style="border: none; background: none" 
+                                class="category"
+                                (click)="categoryFilter('drinks')">
+                                <h6 style="font-size: 16px;">İçecekler</h6>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- card-body.// -->
+            </div>
+            <!-- collapse.// -->
+        </details> 
+        <!-- Brand Filter // -->
+        <details class="filter-group">
+            <summary class="card-header">
+                Markalar
+                <a
+                    class="title" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse_aside_brands">
+                </a>
+            </summary>
+            <div class="collapse show" id="collapse_aside_brands">
+                <div class="card-body">
+                    <ng-container *ngFor="let item of uniqueBrands" >
+                    <label class="form-check mb-2">
+                        <input 
+                            class="form-check-input" 
+                            type="checkbox" 
+                            value="{{ item }}" 
+                            (change)="brandFilter($event)"/>
+                        <span class="form-check-label"> {{ item }} </span>
+                    </label>
+                    </ng-container>
+                    <!-- form-check end.// -->
+                </div>
+                <!-- card-body .// -->
+            </div>
+            <!-- collapse.// -->
+        </details>
+        <!-- Price Filter-->
+        <details class="filter-group">
+            <summary class="card-header">
+                Fiyat
+                <a 
+                    class="title" 
+                    data-bs-toggle="collapse" data-bs-target="#collapse_aside2"> 
+                </a>
+            </summary>
+            <div class="collapse show" id="collapse_aside2">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label for="min" class="form-label">Min</label>
+                            <input 
+                                class="form-control" 
+                                id="min" 
+                                placeholder="0 TL" 
+                                type="number" 
+                                #min />
+                        </div>
+                        <!-- col end.// -->
+                        <div class="col-6">
+                            <label for="max" class="form-label">Max</label>
+                            <input 
+                                class="form-control" 
+                                id="max" 
+                                placeholder="100 TL" 
+                                type="number"
+                                #max />
+                        </div>
+                        <!-- col end.// -->
+                    </div>
+                    <!-- row end.// -->
+                    <button 
+                        class="btn btn-light w-100 mb-2" 
+                        type="button"
+                        (click)="priceFilter(min.value, max.value)">
+                        Uygula
+                    </button>
+                    <button 
+                        class="btn btn-light w-100" 
+                        type="button" 
+                        (click)="priceFilter('', '')">
+                        Sıfırla
+                    </button>
+                </div>
+                <!-- card-body.// -->
+            </div>
+            <!-- collapse.// -->
+        </details>
+        <!-- Ratings Filter-->
+        <details class="filter-group">
+            <summary class="card-header">
+                Derecelendirmeler
+                <a 
+                    class="title" 
+                    data-bs-toggle="collapse" data-bs-target="#collapse_aside4">
+                </a>
+            </summary>       
+            <div class="collapse show" id="collapse_aside4">
+                <form class="card-body" >
+                    <div class="form-check" >
+                        <input 
+                            class="form-check-input" 
+                            type="checkbox" 
+                            name="flexRadioDefault" 
+                            id="flexRadioDefault1"
+                            value="4" 
+                            (change)="starFilter($event)" />
+                        <span class="form-check-label">
+                            <ul class="rating-stars">
+                                <li>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <strong> & Yukarı</strong>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="checkbox" 
+                            name="flexRadioDefault" 
+                            id="flexRadioDefault1" 
+                            value="3"
+                            (change)="starFilter($event)" />
+                       <span class="form-check-label">
+                            <ul class="rating-stars">
+                                <li>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <strong> & Yukarı</strong>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="checkbox" 
+                            name="flexRadioDefault" 
+                            id="flexRadioDefault2" 
+                            value="2"
+                            (change)="starFilter($event)" />
+                        <span class="form-check-label">
+                            <ul class="rating-stars">
+                                <li>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <i class="bi bi-star-fill text-dark"></i>
+                                    <strong>& Yukarı</strong>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault2"
+                          value="1"
+                          (change)="starFilter($event)" />
+                        <span class="form-check-label">
+                          <ul class="rating-stars">
+                            <li>
+                              <i class="bi bi-star-fill text-dark"></i>
+                              <strong>& Yukarı</strong>
+                            </li>
+                          </ul>
+                        </span>
+                      </div>
+                    <!-- form-check end.// -->
+                </form>
+                <!-- card-body.// -->
+            </div>
+            <!-- collapse.// -->
+        </details>
+        <!-- filter-group // -->
+    </div>
+    <!-- card.// -->
+    <!-- ===== Card for sidebar filter .// ===== -->
+<!-- Filter Section Ends -->

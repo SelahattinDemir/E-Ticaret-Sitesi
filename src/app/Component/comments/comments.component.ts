@@ -14,7 +14,6 @@ export class CommentsComponent implements OnInit {
 
   public productsDetail: any;
   public currentUrl!: string;
-  public rating = 3;
   public commentForm!: FormGroup;
   private itemId: any;
 
@@ -48,8 +47,6 @@ export class CommentsComponent implements OnInit {
     Object.assign(comment, { "time": date });
     //Star section
     //In real application this should not divided by 2 this is only for mock up
-    this.productsDetail[0].star =
-      (this.productsDetail[0].star + this.rating) / 2;
     // Comment section
     this.productsDetail[0].comments.push(comment);
     this.api

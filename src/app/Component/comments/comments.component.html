@@ -25,7 +25,7 @@
                 </span>
                 <span class="be-comment-time">
                   <i class="bi bi-clock"></i>
-                  {{item.time | date:'medium'}}
+                  {{ item.time | date:'medium'}}
                 </span>
                 <p class="be-comment-text">
                   {{ item.comment }}
@@ -46,9 +46,6 @@
           </a>
         </div>
         <!-- commenting section-->
-        <ngx-material-rating 
-          [(ngModel)]="rating" > 
-        </ngx-material-rating>
         <form class="form-block" [formGroup]="commentForm" (ngSubmit)="submit()">
           <div class="row">
             <div class="col-xs-12 col-sm-6">

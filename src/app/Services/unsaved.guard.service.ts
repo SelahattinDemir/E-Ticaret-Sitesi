@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from '../Pages/admin-dashboard/admin-dashboard.component';
 
 @Injectable({
   providedIn: 'root'

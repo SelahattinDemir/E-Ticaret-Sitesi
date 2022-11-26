@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { BasketComponent } from './basket/basket.component';
-import { LoginComponent } from './login/login.component';
-import { OrdersComponent } from './orders/orders.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductsdetailComponent } from './productsdetail/productsdetail.component';
+import { AdminDashboardComponent } from './Pages/admin-dashboard/admin-dashboard.component';
+import { BasketComponent } from './Pages/basket/basket.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { OrdersComponent } from './Pages/orders/orders.component';
+import { ProductsComponent } from './Pages/products/products.component';
+import { ProductsdetailComponent } from './Pages/productsdetail/productsdetail.component';
 import { AdminGuard } from './Services/admin.guard.service';
 import { AuthGuard } from './Services/auth.guard.service';
 import { UnsavedGuard } from './Services/unsaved.guard.service';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './Pages/signup/signup.component';
 
 //page routes for components with guards
 const routes: Routes = [

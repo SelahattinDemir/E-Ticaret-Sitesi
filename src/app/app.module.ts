@@ -16,22 +16,24 @@ import { MatSortModule } from '@angular/material/sort';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ProductsComponent } from './products/products.component';
-import { HeaderComponent } from './header/header.component';
-import { ProductsdetailComponent } from './productsdetail/productsdetail.component';
+import { ProductsComponent } from './Pages/products/products.component';
+import { HeaderComponent } from './Component/header/header.component';
+import { ProductsdetailComponent } from './Pages/productsdetail/productsdetail.component';
 import { ApiService } from './Services/api.service';
-import { FilterHandlerPipe } from './filtered/filter-handler.pipe';
+import { FilterHandlerPipe } from './Component/filtered/filter-handler.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BasketComponent } from './basket/basket.component';
-import { OrdersComponent } from './orders/orders.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { FooterComponent } from './footer/footer.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { BasketComponent } from './Pages/basket/basket.component';
+import { OrdersComponent } from './Pages/orders/orders.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { SignupComponent } from './Pages/signup/signup.component';
+import { FooterComponent } from './Component/footer/footer.component';
+import { AdminDashboardComponent } from './Pages/admin-dashboard/admin-dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorHandleInterceptor } from './interceptors/error.interceptor';
-import { DialogComponent } from './dialog/dialog.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { DialogComponent } from './Component/dialog/dialog.component';
+import { ConfirmDialogComponent } from './Component/confirm-dialog/confirm-dialog.component';
+import { FilterBarComponent } from './Component/filter-bar/filter-bar.component';
+import { CommentsComponent } from './Component/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     FooterComponent,
     AdminDashboardComponent,
     DialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    FilterBarComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

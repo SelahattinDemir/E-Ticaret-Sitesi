@@ -30,7 +30,7 @@ export class ApiService {
   }
 
   checkoutApi(itemList: any){
-    return this.http.post<any>(`${this.baseUrl}orders`,itemList);
+    return this.http.post<any>(`${this.baseUrl}orders`, itemList);
   }
 
   ordersApi(){

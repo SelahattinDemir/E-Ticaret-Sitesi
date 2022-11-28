@@ -1,10 +1,36 @@
+<h1 align="center">Angular E-commerce Web Application</h1>
+
+
+
+<h3 align="center">Languages and Tools:</h3>
+<p align="center"> <a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" width="40" height="40"/> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a></a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a>
+
+
 # ETicaretSitesi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+:rocket: Run `npm i or npm install` to install all packages then install start fake server json api with `npm install -g json-server`then start server `json-server --watch db.json` then finally for compling and starting page `ng serve --o`.
+
+## About Project
+This project is an e-commerce site made with Angular.js. When you enter the site, the first login page welcomes you. You cannot access the site without a login. So you have to register first. Sign up and login pages Reactive form approach used, validation management was carried out in form transactions and a user-friendly warning message should be generated. After logging in, you are first greeted by the home page. There are products on the main page and filtering is done. You can also go to the product detail and basket page. You can also add products to the cart. On this page, we keep our products on json server. We use HttpClient Module to pull data from json server. On our product detail page, we see the product's bigger picture, full description, keywords and comments. You can also comment. According to the number of products added to our basket page, the account is processed. At the same time, you can delete the product you do not want to receive. If you press the payment button in the basket, an alert will appear that your payment has been made. We perform alert operations with Ngx Toastr. If you do not have any products in the basket, only the empty basket note and the a buy now button are displayed on the page. When the payment is made on the cart page, you go to the my orders page. On the My orders page, there are your randomly assigned order number, the picture of the product you bought, its quantity, price and a note that your order has been received.
+If there is no product on the My Orders page, only the note that you do not have an order and a buy now button will appear on the page. Angular Metarials. If you want to add a product to the table, you must press the add product button at the top left. A modal appears when the button is pressed. The modal contains the product information that needs to be filled and the user is guided in case of any error. It also gives you the opportunity to correct and delete previous products. 
+
+
+## Used Packages And Modules
+
+- AppRouting Module
+- HttpClient Module
+- FormsModule
+- ReactiveForms Module
+- Bootstrap Icons
+- Bootstrap 5
+- Angular Metarials Modules
+- Ngx Toastr Module
+- AuthGuard
+- Interceptor Modules
 
 ## Code scaffolding
 

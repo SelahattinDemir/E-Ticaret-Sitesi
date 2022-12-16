@@ -45,7 +45,7 @@ export class ProductfiltersService {
   }
 
   priceFilterService(min:any,max:any){
-    if(!(min==="")){
+    if(!(min === "")){
       if(this.filteringURL.includes("&price_gte"))
       {let replace=`&price_gte=${min}`
       this.filteringURL= this.filteringURL.replace(/&price_gte=\d+/, replace)}

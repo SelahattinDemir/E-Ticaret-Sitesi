@@ -40,18 +40,18 @@
 
      <!-- username and logout-login button -->
     <button 
-      *ngIf="user" 
-      (click)="logout()" 
-      routerLink="login" 
+      *ngIf="user"  
+      routerLink="login"
       class="btn" 
+      (click)="logout()"
       style="color:white">
-      <span style="color: white;padding-top: 10px; padding-right: 30px">{{user.username}}</span>
+      <span style="color: white;padding-top: 10px; padding-right: 30px">{{ user.username }}</span>
       Çıkış
     </button>
     <button 
       *ngIf="!user" 
       routerLink="login" 
-      class="btn" 
+      class="btn"
       style="color:white">
       Giriş
     </button>

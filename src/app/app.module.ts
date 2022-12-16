@@ -12,16 +12,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
 import { ProductsComponent } from './Pages/products/products.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { ProductsdetailComponent } from './Pages/productsdetail/productsdetail.component';
 import { ApiService } from './Services/api.service';
 import { FilterHandlerPipe } from './filtered/filter-handler.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasketComponent } from './Pages/basket/basket.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
 import { LoginComponent } from './Pages/login/login.component';
@@ -74,6 +74,10 @@ import { CommentsComponent } from './Component/comments/comments.component';
     MatSortModule
   ],
   providers: [ApiService,
+    {
+      provide: 'apiUrl',
+      useValue: 'https://demo.limantech.com/cards/public/api'
+    },
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,

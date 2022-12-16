@@ -77,7 +77,7 @@ export class DialogComponent implements OnInit {
       this.api.updateItemApi(this.formValue.value, this.row.id)
       .subscribe(res => {
         this.formValue.reset();
-        this.toastr.success('Ürün Eklendi', 'Success');
+        this.toastr.success('Ürün Güncellendi', 'Success');
       })
     }
     else{
